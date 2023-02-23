@@ -1,22 +1,29 @@
 import { useState } from "react";
+import styles from "./App.css"
+import Button from "./components/Button";
 
 function App(){
   let [currentValue, setCurrentValue] = useState(0);
 
-  function handlerClickAdd(event){
+  function addition(){
     setCurrentValue(currentValue + 1);
-  }
+  };
 
-  function handlerClickSubstract(event){
+  function substraction(){
     setCurrentValue(currentValue - 1);
-  }
-    
+  };
+
+  function reset(){
+    setCurrentValue(0);
+  };
+
   return(
-    <>
-    <p>{currentValue}</p>
-    <button onClick={handlerClickAdd}>+</button>
-    <button onClick={handlerClickSubstract}>-</button>
-    </>
+    <div className="counter">
+      <p>{currentValue}</p>
+      <Button text="+" operation={addition}></Button>
+      <Button text="-" operation={substraction}></Button>
+      <Button text="Reset" operation={reset}></Button>
+    </div>
   );
 
 };
