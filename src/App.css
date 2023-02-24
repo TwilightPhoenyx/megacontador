@@ -6,26 +6,35 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-self: center;
-  align-content: center;
   border: solid;
   border-radius: 1rem;
-  width: 100%;
-  margin-top: 10%;
-  margin-left: 40%;
-  margin-right: 40%;
+  margin-top: 5%;
   padding: 5rem;
   font-size: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(190, 190, 190);
 }
 
-.counter > p {
+.counter h1 {
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+.counter  p {
   text-align: center;
   border: solid;
   border-radius: 0.5rem;
-  border-width: 0.1rem;
+  border-width: 0.2rem;
+  width: 3rem;
   padding: 0.5rem;
+  background-color: white;
+  color:green;
+  border-color: black;
 }
 
-.counter > button {
+.counter  button {
   margin: 0.1rem;
+  width: 6rem;
+  justify-self: center;
 }
