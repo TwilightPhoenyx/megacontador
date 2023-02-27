@@ -26,11 +26,13 @@
   border: solid;
   border-radius: 0.5rem;
   border-width: 0.2rem;
-  width: 3rem;
+  width: 4rem;
   padding: 0.5rem;
-  background-color: white;
-  color:green;
-  border-color: black;
+  background-color: rgb(12, 156, 60);
+  color:rgb(34, 87, 34);
+  border-color: rgb(80, 80, 80);
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .counter  button {

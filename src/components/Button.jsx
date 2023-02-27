@@ -14,7 +14,7 @@ function Button({text, operation}){
     };
 
     return (
-        <button onClick={handlerClickedButton}>{text} ({clickNumber})</button>
+        <button onClick={handlerClickedButton}>{text} <span class="badge badge-light">{clickNumber}</span></button>
     );
 
 };
