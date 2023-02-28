@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Button({text, operation}){
+function Button({text, operation, style="primary"}){
 
     let [clickNumber, setClickNumber] = useState(0);
 
@@ -14,7 +14,22 @@ function Button({text, operation}){
     };
 
     return (
-        <button onClick={handlerClickedButton}>{text} <span class="badge badge-light">{clickNumber}</span></button>
+        <button className={
+            "btn " +
+            ( style === "primary" ? "btn-primary" : "") +
+            ( style === "secondary" ? "btn-secondary" : "") +
+            ( style === "success" ? "btn-success" : "") +
+            ( style === "danger" ? "btn-danger" : "") +
+            ( style === "warning" ? "btn-warning" : "") +
+            ( style === "info" ? "btn-info" : "") +
+            ( style === "ligth" ? "btn-ligth" : "") +
+            ( style === "dark" ? "btn-dark" : "")
+        }
+        onClick={handlerClickedButton}
+        >
+        {text}
+            <span className="badge badge-light">{clickNumber}</span>
+        </button>
     );
 
 };
