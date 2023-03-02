@@ -3,7 +3,7 @@ function InputValue({interval}) {
 
     function handlerInsertInterval(event){
         const valueInputed = parseInt(event.target.value);
-        if (isNaN(valueInputed) === true)
+        if (isNaN(valueInputed) === true || valueInputed <= 0)
          {
           event.target.value = "";
         } else 
