@@ -7,6 +7,7 @@ function App(){
   let [autoInc, setAutoInc] = useState(false); //para controlar q el useEfect no se inice al inicio
   let [autoDec, setAutoDec] = useState(false); //para controlar q el useEfect no se inice al inicio
   let [autoValue, setAutoValue] = useState(1);
+  let [autoValueInterval, setAutoValueInterval] = useState(1); //para controlar el intervalo del auto
 
   function addition(){
     setCurrentValue(currentValue + 1);
@@ -16,16 +17,25 @@ function App(){
     setCurrentValue(currentValue - 1);
   };
 
+  function handlerInsertInterval(event){
+    const valueImputed = parseInt(event.target.value);
+    if (isNaN(valueImputed) === true)
+     {
+      event.target.value = "";
+    } else 
+      setAutoValueInterval(valueImputed);
+  };
+
   function autoIncrement(){ //Handler del autoInc.
     setAutoDec(false); //Cambio el autoDec a false, para detener la cuenta automatica negativa
     setAutoInc(!autoInc); //Cambia el valor de autoInc, para activarlo si esta detenido y viceversa
-    setAutoValue(1);  //Cambia el valor de autoVale
+    setAutoValue(autoValueInterval);  //Cambia el valor de autoValue a 1 para sumarlo en la funcion autoCount
   };
 
   function autoDecrement(){ //Handler de autoDec.
-    setAutoInc(false);
-    setAutoDec(!autoDec);
-    setAutoValue(-1);
+    setAutoInc(false); //Cambio el autoInc a false, para detener la cuenta automatica
+    setAutoDec(!autoDec); //Cambia el valor de autoDec, para activarlo si esta detenido y viceversa
+    setAutoValue(-autoValueInterval); //Cambia el valor de autoValue a -1 para sumarlo en la funcion autoCount
   };
 
   function autoCount(){ //Funcion que se ejecutara con el useEffect
@@ -36,6 +46,7 @@ function App(){
     setCurrentValue(0);
     setAutoInc (false);    
     setAutoDec (false);
+    setAutoValueInterval (1);
   };
 
   useEffect (
@@ -71,6 +82,7 @@ function App(){
             </div>
             <div className="row">
                 <Button text="Reset " operation={reset}></Button>
+                <input type="text" placeholder="intervalo" onInput={handlerInsertInterval}></input>
             </div>
     </div>
   );
