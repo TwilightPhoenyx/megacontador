@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
+
 import "./App.css";
+
 import Button from "./components/Button";
+import InputValue from "./components/InputValue";
 
 function App(){
   let [currentValue, setCurrentValue] = useState(0);
   let [autoInc, setAutoInc] = useState(false); //para controlar q el useEfect no se inice al inicio
   let [autoDec, setAutoDec] = useState(false); //para controlar q el useEfect no se inice al inicio
   let [autoValue, setAutoValue] = useState(1);
-  let [autoValueInterval, setAutoValueInterval] = useState(1); //para controlar el intervalo del auto
+  let [autoValueInterval, setAutoValueInterval] = useState(1); //para controlar el valor del intervalo del auto
 
   function addition(){
     setCurrentValue(currentValue + 1);
@@ -15,15 +18,6 @@ function App(){
 
   function substraction(){
     setCurrentValue(currentValue - 1);
-  };
-
-  function handlerInsertInterval(event){
-    const valueImputed = parseInt(event.target.value);
-    if (isNaN(valueImputed) === true)
-     {
-      event.target.value = "";
-    } else 
-      setAutoValueInterval(valueImputed);
   };
 
   function autoIncrement(){ //Handler del autoInc.
@@ -46,7 +40,6 @@ function App(){
     setCurrentValue(0);
     setAutoInc (false);    
     setAutoDec (false);
-    setAutoValueInterval (1);
   };
 
   useEffect (
@@ -60,8 +53,8 @@ function App(){
 
   return(
     <div className="counter">
-        <h1 class>Megacontador</h1>
-        <p class>{currentValue}</p>
+        <h1>Megacontador</h1>
+        <p>{currentValue}</p>
             <div className="row">
                 <div className="col">
                   <div className="row">
@@ -82,7 +75,9 @@ function App(){
             </div>
             <div className="row">
                 <Button text="Reset " operation={reset}></Button>
-                <input type="text" placeholder="intervalo" onInput={handlerInsertInterval}></input>
+            </div>
+            <div className="row">
+                <InputValue interval={setAutoValueInterval}/>
             </div>
     </div>
   );
